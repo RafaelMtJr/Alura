@@ -19,6 +19,7 @@ namespace CaelumEstoque.Controllers
             return View(produtos);
         }
 
+        [Route("Produtos/Form")]
         public ActionResult Form()
         {
             CategoriasDAO categoriasDAO = new CategoriasDAO();
@@ -58,10 +59,10 @@ namespace CaelumEstoque.Controllers
         }
 
         [Route("produtos/{id}", Name = "VisualizaProduto")]
-        public ActionResult Visualiza(int Id)
+        public ActionResult Visualiza(int id)
         {
             ProdutosDAO dao = new ProdutosDAO();
-            Produto produto = dao.BuscaPorId(Id);
+            Produto produto = dao.BuscaPorId(id);
             ViewBag.Produto = produto;
 
             return View();

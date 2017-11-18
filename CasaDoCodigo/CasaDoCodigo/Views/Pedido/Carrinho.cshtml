@@ -1,1 +1,49 @@
-﻿<h1>Esta é a view de carrinho.</h1>
+﻿@{
+    ViewData["Title"] = "Carrinho";
+}
+@using CasaDoCodigo.Models;
+@model List<ItemPedido>
+
+<h3>Meu carrinho</h3>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">Item</div>
+            <div class="col-md-2">Preço Unitário</div>
+            <div class="col-md-2">Quantidade</div>
+            <div class="col-md-2">
+                <span class="pull-right">
+                    Subtotal
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel-body">
+            @foreach (var item in Model)
+            {
+                // mover todo o bloco do item do carrinho
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/images/produtos/small_@(item.Id).jpg" />
+                    </div>
+                    <div class="col-md-3">@item.Produto.Nome</div>
+                    <div class="col-md-2">R$ @item.PrecoUnitario</div>
+                    <div class="col-md-2">@item.Quantidade</div>
+                    <div class="col-md-2">
+                        <span class="pull-right">
+                            R$ @item.Subtotal
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a asp-action="resumo" class="btn btn-success pull-right">Finalizar pedido</a>
+    </div>
+</div>

@@ -11,11 +11,20 @@ namespace CasaDoCodigo.Models
         public String Nome { get; private set; }
         public decimal Preco { get; private set; }
 
-        public Produto(int id, String nome, decimal preco)
+        public Produto(int id, String nome, decimal preco) : this(nome, preco)
         {
             this.Id = id;
+        }
+
+        public Produto(String nome, decimal preco)
+        {
             this.Nome = nome;
             this.Preco = preco;
+        }
+
+        public Produto()
+        {
+
         }
     }
 }
